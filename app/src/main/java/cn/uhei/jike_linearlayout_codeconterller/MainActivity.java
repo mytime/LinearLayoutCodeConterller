@@ -2,6 +2,7 @@ package cn.uhei.jike_linearlayout_codeconterller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -9,7 +10,7 @@ import android.widget.LinearLayout;
  * 使用代码定义布局文件
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //手动定义个线性布局
     private LinearLayout root;
@@ -24,12 +25,29 @@ public class MainActivity extends AppCompatActivity {
 
         //初始化线性布局
         root = new LinearLayout(this);
+        //垂直方向：垂直
+        root.setOrientation(LinearLayout.VERTICAL);
         //设置布局文件是root
         setContentView(root);
 
-        //初始化一个按钮组件
-        btnClickme = new Button(this);
-        btnClickme.setText("clickme");
+        for (int i = 0; i < 5; i++) {
+            //初始化一个按钮组件
+            btnClickme = new Button(this);
+            btnClickme.setText("Remove me");
+
+            //监听器：点击被移除
+            btnClickme.setOnClickListener(this);
+
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+           //平均分割父级容器高度
+            lp.weight = 1;
+            //向视图添加组件
+            root.addView(btnClickme,lp);
+        }
+
+//        //初始化一个按钮组件
+//        btnClickme = new Button(this);
+//        btnClickme.setText("clickme");
 
         /**
          * 添加布局对象的几种方法
@@ -47,8 +65,13 @@ public class MainActivity extends AppCompatActivity {
 //        root.addView(btnClickme,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
 
         //4 先定义布局属性再向布局添加组件
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-        root.addView(btnClickme,lp);
+//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+//        root.addView(btnClickme,lp);
 
+    }
+    //监听器：点击被移除
+    @Override
+    public void onClick(View v) {
+        root.removeView(v);
     }
 }

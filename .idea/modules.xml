@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Jike_LinearLayout_CodeConterller.iml" filepath="$PROJECT_DIR$/Jike_LinearLayout_CodeConterller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LinearLayoutCodeConterller.iml" filepath="$PROJECT_DIR$/LinearLayoutCodeConterller.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
